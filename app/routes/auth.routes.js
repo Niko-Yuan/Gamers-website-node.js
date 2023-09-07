@@ -16,10 +16,6 @@ module.exports = function(app) {
       verifySignUp.checkDuplicateUsernameOrEmail,
       verifySignUp.checkRolesExisted
     ],
-    // (req, res, next) => {
-    //   console.log("Signup request received"); // Debugging log
-    //   next();
-    // },
     controller.signup
   );
 
