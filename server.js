@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 
 var corsOptions = {
-  origin: ["http://localhost:8081", "https://gamers-nkbr.onrender.com", "http://localhost:4173"]
+  origin: ["http://localhost:8081", "http://localhost:8080", "https://gamers-nkbr.onrender.com", "http://localhost:4173"]
 };
 
 app.use(cors(corsOptions));
@@ -16,18 +16,18 @@ const db = require("./app/models");
 
 db.sequelize.sync();
 
-app.get("/", (req, res) => {
+app.get("/testWelcome", (req, res) => {
   res.json({ message: "Welcome to Fangqi Yuan application." });
 });
 
 // Serve the static files from the React app
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, '../Gamers-website-react/dist')));
 
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, '../Gamers-website-react/dist', 'index.html'));
 });
 
 const PORT = process.env.PORT || 8080;
