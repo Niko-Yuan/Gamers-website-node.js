@@ -21,13 +21,13 @@ app.get("/", (req, res) => {
 });
 
 // Serve the static files from the React app
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 const PORT = process.env.PORT || 8080;
