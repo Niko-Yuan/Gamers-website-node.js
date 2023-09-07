@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 
 var corsOptions = {
-  origin: ["http://localhost:8081", "https://gamers-nkbr.onrender.com"]
+  origin: ["http://localhost:8081", "https://gamers-nkbr.onrender.com", "http://localhost:4173"]
 };
 
 app.use(cors(corsOptions));
