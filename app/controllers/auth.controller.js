@@ -25,6 +25,9 @@ exports.signup = (req, res) => {
         }).then(roles => {
           user.setRoles(roles).then(() => {
             res.send({ message: "User registered successfully!" });
+          }).catch(error => {
+            console.error("Error setting roles:", error);
+            res.status(500).send({ message: "Error setting roles." });
           });
         });
       } else {
