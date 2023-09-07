@@ -35,7 +35,7 @@ exports.signup = (req, res) => {
       }
     })
     .catch(err => {
-      console.log("Error:", err.message); // Debugging log
+      console.log("Error:", err.message);
       res.status(500).send({ message: err.message });
     });
 };
@@ -68,7 +68,7 @@ exports.signin = (req, res) => {
                               {
                                 algorithm: 'HS256',
                                 allowInsecureKeySizes: true,
-                                expiresIn: 86400, // 24 hours
+                                expiresIn: 86400,
                               });
 
       var authorities = [];
