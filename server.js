@@ -33,6 +33,7 @@ require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 
 app.get('*', (req, res) => {
+  console.log(path.join(__dirname, 'dist', 'index.html'));
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
