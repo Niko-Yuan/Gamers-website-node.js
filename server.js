@@ -16,6 +16,12 @@ const db = require("./app/models");
 
 db.sequelize.sync();
 
+// Middleware function to log all incoming requests
+app.use((req, res, next) => {
+  console.log(`Received ${req.method} request at ${req.url}`);
+  next(); // Continue to the next middleware or route handler
+});
+
 app.get("/testWelcome", (req, res) => {
   res.json({ message: "Welcome to Fangqi Yuan application." });
 });
