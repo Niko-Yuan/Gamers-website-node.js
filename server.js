@@ -20,6 +20,11 @@ app.get("/testWelcome", (req, res) => {
   res.json({ message: "Welcome to Fangqi Yuan application." });
 });
 
+app.get('/home', (req, res) => {
+  // Handle the request for the /home route
+  res.send('Welcome to the home page');
+});
+
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, '../Gamers-website-react/dist')));
 
