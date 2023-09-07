@@ -9,6 +9,11 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
+  console.log("Inside signup function"); // Debugging log
+
+  // Log incoming request body
+  console.log("Request Body:", req.body); // Debugging log
+
   // Save User to Database
   User.create({
     username: req.body.username,
@@ -16,6 +21,8 @@ exports.signup = (req, res) => {
     password: bcrypt.hashSync(req.body.password, 8)
   })
     .then(user => {
+      console.log("User created:", user); // Debugging log
+
       if (req.body.roles) {
         Role.findAll({
           where: {
@@ -24,13 +31,20 @@ exports.signup = (req, res) => {
             }
           }
         }).then(roles => {
+          console.log("Roles found:", roles); // Debugging log
+
           user.setRoles(roles).then(() => {
+            console.log("Roles set for user"); // Debugging log
             res.send({ message: "User registered successfully!" });
           });
         });
+      } else {
+        console.log("No roles specified"); // Debugging log
+        res.send({ message: "User registered successfully but no roles set!" });
       }
     })
     .catch(err => {
+      console.log("Error:", err.message); // Debugging log
       res.status(500).send({ message: err.message });
     });
 };
