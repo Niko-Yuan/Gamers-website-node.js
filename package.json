@@ -1,5 +1,5 @@
 {
-  "name": "node-js-jwt-auth-postgresql",
+  "name": "gamers-node-js-postgresql",
   "version": "1.0.0",
   "description": "Node.js Demo for JWT Authentication with PostgreSQL",
   "main": "server.js",
