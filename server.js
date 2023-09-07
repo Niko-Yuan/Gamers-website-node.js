@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "https://gamers-server.onrender.com"
+  origin: ["http://localhost:8081", "https://gamers-nkbr.onrender.com"]
 };
 
 app.use(cors(corsOptions));
